@@ -10,9 +10,9 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 const pusher = new Pusher({
-    appId: "1533301",
-    key: "313ff95b11840bfd45d4",
-    secret: "5901f8b340a044d375d1",
+    appId: `${process.env.PUSHER_APP_ID}`,
+    key: `${process.env.PUSHER_APP_KEY}`,
+    secret: `${process.env.PUSHER_APP_SECRET}`,
     cluster: "ap2",
     useTLS: true
 });
@@ -24,7 +24,7 @@ app.use(cors());
 
 
 //DB config
-const connection_url = "mongodb+srv://mohit:mohit@cluster0.ohj29cd.mongodb.net/?retryWrites=true&w=majority";
+const connection_url = `${process.env.MONGO_URI}`;
 mongoose.set("strictQuery", false);
 mongoose.connect(connection_url, {
     useNewUrlParser: true,
